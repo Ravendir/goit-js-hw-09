@@ -5,4 +5,4 @@ var t,o=arguments[3];!function(o,i){"function"==typeof t&&t.amd?t([],function(){
 },{}],"GyVV":[function(require,module,exports) {
 "use strict";var e=require("notiflix/build/notiflix-notify-aio");const t=document.querySelector(".form");function i(e,t){const i=Math.random()>.3;return new Promise((o,n)=>{i?o({position:e,delay:t}):n({position:e,delay:t})})}function o(o){o.preventDefault();let n=Number(t.elements.delay.value),s=Number(t.elements.step.value),r=Number(t.elements.amount.value);for(let t=1;t<=r;t+=1)i(t,n).then(({position:t,delay:i})=>{setTimeout(()=>{e.Notify.success(`Promise ${t} created with ${i} ms`)},i)}).catch(({position:t,delay:i})=>{setTimeout(()=>{e.Notify.failure(`Promise ${t} not created with ${i} ms`)},i)}),n+=s}t.addEventListener("submit",o);
 },{"notiflix/build/notiflix-notify-aio":"MeeU"}]},{},["GyVV"], null)
-//# sourceMappingURL=/parcel-project-template/03-promises.b9628d1f.js.map
+//# sourceMappingURL=/goit-js-hw-09/03-promises.b9628d1f.js.map
