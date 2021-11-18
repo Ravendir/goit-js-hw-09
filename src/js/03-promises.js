@@ -8,11 +8,13 @@ function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
 
   return new Promise((resolve, reject) => {
-    if (shouldResolve) {
-      resolve({ position, delay });
-    } else {
-      reject({ position, delay });
-    }
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve({ position, delay });
+      } else {
+        reject({ position, delay });
+      }
+    }, delay);
   });
 }
 
@@ -26,16 +28,11 @@ function onSubmit(e) {
   for (let position = 1; position <= amount; position += 1) {
     createPromise(position, delay)
       .then(({ position, delay }) => {
-        setTimeout(() => {
-          Notify.success(`Promise ${position} created with ${delay} ms`);
-        }, delay);
+        Notify.success(`Promise ${position} created with ${delay} ms`);
       })
       .catch(({ position, delay }) => {
-        setTimeout(() => {
-          Notify.failure(`Promise ${position} not created with ${delay} ms`);
-        }, delay);
+        Notify.failure(`Promise ${position} not created with ${delay} ms`);
       });
-
     delay += step;
   }
 }
